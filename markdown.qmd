@@ -5,6 +5,8 @@ format: html
 
 마크다운 기초 실습
 
+- 렌더 (Viewer)
+
 - 헤더
 - Bold / Italic
 - 링크
