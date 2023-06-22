@@ -1,0 +1,531 @@
+---
+format: 
+  revealjs:
+    css: ../css/styles.css
+    navigation-mode: linear
+    controls-layout: edges
+    controls-back-arrows: visible
+    slide-number: true
+    show-slide-number: all
+    preview-links: auto
+    progress: true
+    history: true
+    hash-type: number
+    theme: beige
+    code-block-background: true
+    highlight-style: github
+    code-link: false
+    code-copy: true
+    pagetitle: "R4CR quarto"
+    author-meta: "jhk0530"
+    date-meta: "2023-06-19"
+    standalone: true
+    logo: img/zarathu.png
+    footer: R4CR - Quarto presentation
+  
+execute: 
+  freeze: true
+---
+
+::: {.my-title}
+# [R4CR]{.blue} <br />
+
+::: {.my-grey}
+[Day3 - quarto slide | 2023-06-19]{}<br />
+[Jinhwan Kim]{}
+:::
+
+![](../img/code.svg){.absolute bottom=0 right=0 width=400}
+:::
+
+# Overview
+
+## HTML Presentation {.smaller}
+
+::: {.columns .pv4}
+::: {.column width="60%"}
+
+<img src='img/keynote.png' width = '100px'>
+<img src='img/powerpoint.png' width = '100px'>
+<img src='img/googleslides.png' width = '100px'>
+
+프레젠테이션 제작
+
+- Powerpoint / Keynote
+  - 거의 무제한의 커스텀
+
+- Google Slides
+  - 클라우드상에서 작성 / 활용 가능
+
+- 1회성일때 좋음
+
+:::
+
+::: {.column .tc .pv5 .relative width="40%"}
+
+Quarto presentation
+
+<img src='img/powerpoint.png' width = '100px'>
+<img src='img/revealjs.png' width = '100px'>
+
+- [RevealJS]{.b .blue}
+- PowerPoint
+- Beamer (LaTeX / PDF)
+
+- R / Rstudio를 활용
+- 일관된 포맷 / 퀄리티
+- 정기적일때 좋음 
+
+:::
+:::
+
+# Quarto Presentation
+
+## 슬라이드 만들기 {.smaller}
+
+::: {.columns .pv4}
+
+::: {.column width="50%"}
+
+File -> New File -> [Quarto Presentation]{.b .blue}
+
+아니면 YAML에 [format: revealjs]{.b .blue} 
+
+```
+---
+title: ''
+author: '' 
+format: revealjs
+---
+```
+
+슬라이드 **장** 구분은 [##]{.b .blue}
+
+```
+--- 
+title: "Title"
+author: "author"
+format: revealjs
+---
+  
+## First 
+  
+- Item
+- Item2
+
+## Second
+
+- Item3
+- Item4
+```
+
+:::
+
+::: {.column .tc .pv5 width="50%"}
+
+<img src='img/first.png' width = '400px' style = 'border: solid 1px black'>
+<img src='img/second.png' width = '400px' style = 'border: solid 1px black'>
+
+:::
+
+:::
+
+## 단계별로 등장 {.smaller}
+
+::: {.columns .pv4}
+
+::: {.column width="50%"}
+
+:::{.incremental}
+- 이렇게 나눠서 하려면
+- [.incremental]{.b .blue}
+- 로 구분
+  ```
+  :::{.incremental}
+  - Item
+  - Item2
+  :::
+  ```
+
+:::
+
+:::{.nonincremental}
+- [.nonincremental]{.b .blue}
+- 는 미리 나와있음.
+- 모든 슬라이드에 적용: YAML에 ([권장하지 않음]{.b .green})
+```
+title: "My Presentation"
+format:
+  revealjs:
+    incremental: true   
+```
+:::
+
+:::
+
+::: {.column .tc .pv5 width="50%"}
+
+:::{.fragment}
+- 여러개를 
+- 나눠서 
+:::
+
+:::{.fragment}
+- 나오게 하려면
+- [.fragment]{.b .blue}
+  ```
+  :::{.fragment}
+  - Item
+  - Item2
+  :::
+  ```
+:::
+
+:::
+
+:::
+
+## 행 구분 (X) {.smaller}
+
+- 이건 행 구분 안한 슬라이드 (왼쪽에만 몰림)
+
+- Columns 태그에 **: 4개** 확인
+
+```
+:::: {.columns}
+
+::: {.column width="40%"}
+- 행 구분한
+:::
+
+::: {.column width="60%"}
+- 슬라이드 
+:::
+
+::::
+```
+
+## 행 구분 (O) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- 행 구분한
+:::
+
+::: {.column width="60%"}
+- 슬라이드 
+:::
+
+::::
+
+## 발표자 노트 작성 {.smaller}
+
+- 슬라이드 내용
+
+``` 
+:::{.notes}
+발표자 노트 내용 (S키로)
+:::
+```
+
+:::{.notes}
+발표자 노트 내용
+:::
+
+## 슬라이드 테마 {.smaller}
+- YAML에 theme 설정
+- 이번 슬라이드에는 theme: [default]{.b .blue} 대신, [beige]{.b .green}
+사용
+```
+---
+title: "Presentation"
+format:
+  revealjs: 
+    theme: beige
+---
+```
+
+## 주석 {.smaller}
+
+- 이 내용에 주석을 달고 싶으면
+- 이렇게도 ^[각주내용]
+- 달 수 있음 ^[각주내용2]
+
+```
+::: aside
+이렇게 달 수 있습니다.
+:::
+
+- 이렇게도 ^[각주내용]
+- 달 수 있음 ^[각주내용2]
+
+```
+
+::: aside
+이렇게 달 수 있습니다.
+:::
+
+## Footer & Logo {.smaller}
+
+- Footer는 슬라이드에 따로 적용할 수 있지만
+- Logo는 YAML에 일괄 적용 (오른쪽 아래)
+
+```
+format:
+  revealjs:
+    logo: img/zarathu.png
+
+::: footer
+Another footer
+:::
+```
+
+::: footer
+Another footer
+:::
+
+## Code Highlight {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- `{.r code-line-numbers='4-6'}`
+
+```{r}
+#| eval: false
+#| echo: true
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+---
+
+```{.r code-line-numbers='4-6'}
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+library(ggplot2)
+library(magrittr)
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+:::
+
+:::
+
+## Figure Width {.smaller}
+
+::: {.columns}
+
+```
+#| fig-width: 3
+```
+
+::: {.column width="50%"}
+
+- [fig-width: 3]{.b .blue}
+```{r}
+#| fig-width: 3
+library(ggplot2)
+library(magrittr)
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+::: {.column width="50%"}
+
+- [fig-width: 6]{.b .blue}
+```{r}
+#| fig-width: 6
+library(ggplot2)
+library(magrittr)
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+:::
+
+## Figure Height {.smaller}
+
+::: {.columns}
+
+```
+#| fig-height: 4
+```
+
+::: {.column width="50%"}
+
+- [fig-height: 4]{.b .blue}
+```{r}
+#| fig-height: 4
+library(ggplot2)
+library(magrittr)
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+::: {.column width="50%"}
+
+- [fig-height: 8]{.b .blue}
+```{r}
+#| fig-height: 8
+library(ggplot2)
+library(magrittr)
+iris %>% 
+  ggplot(
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) + 
+  geom_point() + 
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+:::
+
+## Tabsets {.smaller}
+
+```
+::: {.panel-tabset}
+
+### TabA
+
+ContentA
+
+### TabB
+
+ContentB
+```
+
+::: {.panel-tabset}
+
+### Code
+```{r}
+#| eval: false
+#| echo: true
+print(1+1)
+```
+
+### Result
+```{r}
+print(1+1)
+```
+
+:::
+
+
+## 실습
+
+**1일차 - R 기초** 슬라이드 `R 기초연산 : 벡터(vector)` ~ `벡터 만들기` 만들어보기
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+<img src ='img/slide1.png'> 
+
+:::
+
+::: {.column width="50%"}
+
+YAML 은 아래 참조
+```
+---
+format: 
+  revealjs:
+    navigation-mode: linear
+    controls-layout: edges
+    controls-back-arrows: visible
+    slide-number: true
+    show-slide-number: all
+    preview-links: auto
+    progress: true
+    history: true
+    hash-type: number
+    theme: default
+    code-block-background: true
+    highlight-style: github
+    code-link: false
+    code-copy: true
+    pagetitle: "R4CR R 기초"
+    author-meta: "jinseob2kim"
+    date-meta: "2023-06-19"
+---
+```
+:::
+
+:::
+
+## 정리 {.smaller}
+
+- [Revealjs]{.b .blue}를 사용하여 [Quarto]{.b .blue}로 [html 슬라이드]{.b .green}를 만들 수 있음 (**웹에 배포도 가능**)
+- 다른 발표 자료 만드는 방법에 비해서 형식이 정해지고 반복적으로 작업해야할때, R의 결과가 포함되어야 할때 효과적
+- YAML에 [format: revealjs:]{.b .blue}, [##]{.b .blue}, [:::{} :::]{.b .blue}로 슬라이드 생성 가능
+- 그 외에도 많은 커스텀 기능들이 있지만, 필요할때마다 검색해서 사용하면 됨
+  - Figure 크기, Column 구분, Footer, Logo 정도는 익숙해지면 좋음. 
