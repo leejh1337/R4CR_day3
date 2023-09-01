@@ -52,12 +52,16 @@ rsconnect/
 
 .DS_Store
 
+# rendered qmd
+
 hello.html
 hello_files/
-
 
 hello_solution.html
 hello_solution_files/
 
 markdown.html
 markdown_files/
+
+presentation.html
+presentation_files/
