@@ -41,3 +41,52 @@ ggplot(penguins,
   ) +
   theme_minimal()
 ```
+
+## code chuk 
+
+```{r}
+a <- 1
+```
+
+```{r}
+#| eval: false
+a <- 2
+```
+
+```{r}
+print(a)
+```
+
+## Inline code
+
+오늘 날짜는 "`r Sys.Date()`" 입니다. 
+
+## Table
+
+- 그냥 출력
+
+```{r}
+ex <- read.csv('https://github.com/zarathucorp/R4CR-content/raw/main/example_g1e.csv')
+head(ex)
+```
+
+```{r}
+library(knitr)
+library(reactable)
+library(DT)
+```
+
+- kable (STATIC, PDF)
+```{r}
+knitr::kable(head(iris))
+```
+
+- reactable
+```{r}
+reactable::reactable(head(iris))
+```
+
+- DT
+```{r}
+DT::datatable(head(iris))
+```
