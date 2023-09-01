@@ -42,7 +42,7 @@ ggplot(penguins,
   theme_minimal()
 ```
 
-## code chuk 
+## code chuk
 
 ```{r}
 a <- 1
@@ -59,11 +59,11 @@ print(a)
 
 ## Inline code
 
-오늘 날짜는 "`r Sys.Date()`" 입니다. 
+오늘 날짜는 "`r Sys.Date()`" 입니다.
 
 ## Table
 
-- 그냥 출력
+-   그냥 출력
 
 ```{r}
 ex <- read.csv('https://github.com/zarathucorp/R4CR-content/raw/main/example_g1e.csv')
@@ -76,17 +76,20 @@ library(reactable)
 library(DT)
 ```
 
-- kable (STATIC, PDF)
+-   kable (STATIC, PDF)
+
 ```{r}
 knitr::kable(head(iris))
 ```
 
-- reactable
+-   reactable
+
 ```{r}
 reactable::reactable(head(iris))
 ```
 
-- DT
+-   DT
+
 ```{r}
 DT::datatable(head(iris))
 ```
