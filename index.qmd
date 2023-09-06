@@ -4,24 +4,27 @@ format: html
 editor: visual
 ---
 
-{r}
+```{r}
 #| label: load-packages
 #| include: false
 
 library(tidyverse)
 library(palmerpenguins)
+```
 
-Meet Quarto
+## Meet Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-Meet the penguins
+## Meet the penguins
 
-The penguins data from the palmerpenguins package contains size measurements for r nrow(penguins) penguins from three species observed on three islands in the Palmer Archipelago, Antarctica.
+![](https://raw.githubusercontent.com/quarto-dev/quarto-web/main/docs/get-started/hello/rstudio/lter_penguins.png){style="float:right;" fig-alt="Illustration of three species of Palmer Archipelago penguins: Chinstrap, Gentoo, and Adelie. Artwork by @allison_horst." width="401"}
+
+The `penguins` data from the [**palmerpenguins**](https://allisonhorst.github.io/palmerpenguins "palmerpenguins R package") package contains size measurements for `r nrow(penguins)` penguins from three species observed on three islands in the Palmer Archipelago, Antarctica.
 
 The plot below shows the relationship between flipper and bill lengths of these penguins.
 
-{r}
+```{r}
 #| label: plot-penguins
 #| warning: false
 #| echo: false
@@ -37,48 +40,86 @@ ggplot(penguins,
     color = "Penguin species", shape = "Penguin species"
   ) +
   theme_minimal()
+```
 
-code chuk
+## code chuk
 
-{r}
+```{r}
 a <- 1
+```
 
-{r}
+```{r}
 #| eval: false
 a <- 2
+```
 
-{r}
+```{r}
 print(a)
+```
 
-Inline code
+## Inline code
 
-오늘 날짜는 "r Sys.Date()" 입니다.
+오늘 날짜는 "`r Sys.Date()`" 입니다.
 
-Table
+## Table
 
-그냥 출력
+-   그냥 출력
 
-{r}
+```{r}
 ex <- read.csv('https://github.com/zarathucorp/R4CR-content/raw/main/example_g1e.csv')
 head(ex)
+```
 
-{r}
+```{r}
 library(knitr)
 library(reactable)
 library(DT)
+```
 
-kable (STATIC, PDF)
+-   kable (STATIC, PDF)
 
-{r}
-knitr::kable(head(iris))
+```{r}
+knitr::kable(head(ex))
+```
 
-reactable
+-   reactable
 
-{r}
-reactable::reactable(head(iris))
+```{r}
+reactable::reactable(ex)
+```
 
-DT
+-   DT
 
-{r}
-DT::datatable(head(iris))
+```{r}
+DT::datatable(ex)
+```
+
+
+iris 데이터의 행은 `r nrow(iris)`개이다. 
+
+
+
+```{r}
+#| eval: true
+#| echo: false
+
+library(dplyr)
+```
+
+
+```{r}
+#| eval: false
+#| echo: true
+
+print(1+3)
+```
+
+
+```{r}
+#| eval: false
+#| echo: false
+
+print(1+4)
+```
+
 
